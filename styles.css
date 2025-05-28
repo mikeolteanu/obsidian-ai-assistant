@@ -1,0 +1,357 @@
+/* Chat Message Styling */
+.chat-modal-container .chat-message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 1em;
+    padding: 0 4px;
+}
+
+.chat-modal-container .chat-message-content {
+    padding: 12px 16px;
+    max-width: 85%;
+    flex-grow: 1;
+    word-wrap: break-word;
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.chat-modal-container .chat-message-content pre {
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* User Message Specific Layout */
+.chat-modal-container .chat-message-row.user {
+    justify-content: flex-end;
+}
+.chat-modal-container .chat-message-row.user .chat-message-content {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border-radius: 18px 18px 4px 18px;
+    order: 2;
+}
+.chat-modal-container .chat-message-row.user .chat-message-actions {
+    order: 1;
+}
+
+/* Assistant Message Specific Layout */
+.chat-modal-container .chat-message-row.assistant {
+    justify-content: flex-start;
+}
+.chat-modal-container .chat-message-row.assistant .chat-message-content {
+    background-color: var(--background-secondary);
+    color: var(--text-normal);
+    border-radius: 18px 18px 18px 4px;
+    order: 1;
+}
+.chat-modal-container .chat-message-row.assistant .chat-message-actions {
+    order: 2;
+}
+
+
+/* Action Buttons on Messages */
+.chat-message-actions {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 3px; /* Space between action buttons */
+    flex-shrink: 0; /* Prevent buttons from shrinking */
+    align-items: center; /* Center buttons horizontally */
+    padding-top: 5px; /* Add some padding at the top */
+}
+
+.chat-edit-button, .chat-delete-button {
+    padding: 6px;
+    font-size: 0.9em;
+    background-color: var(--background-secondary-alt);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    line-height: 1;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.chat-edit-button:hover, .chat-delete-button:hover {
+    background-color: var(--background-modifier-hover);
+    opacity: 1;
+}
+
+
+/* Main message container */
+.chat-modal-container {
+	display: flex;
+	flex-direction: column;
+	/* Removed row-gap, margin added to rows */
+}
+
+/* Image Modal */
+.image-modal-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	text-align: center;
+}
+
+.image-modal-wrapper {
+	width: 45%;
+	margin: 1%;
+}
+.image-modal-image{
+	width: 100%;
+	max-height: 30vh;
+	object-fit: contain;
+}
+
+/* Prompt Modal (Non-Chat) */
+.prompt-modal-container {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	justify-content: flex-start;
+	column-gap: 0.3em;
+	font-weight: 300;
+	font-style: italic;
+}
+
+.prompt-left-container {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+	align-items: flex-end;
+}
+
+.prompt-right-container {
+	display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+	align-items: center;
+	row-gap: 0.2em;
+}
+
+/* Speech Modal */
+.speech-modal-container{
+	display: flex;
+	justify-content: space-around;
+}
+
+.record-button{ /* For SpeechModal */
+	border-color: green;
+	border-width: 0.3em;
+	border-style: solid;
+}
+
+.description{
+	margin-block-start: 0;
+    margin-block-end: 0;
+	}
+
+.hidden-file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+  overflow: hidden;
+  z-index: -1;
+}
+
+/* Buy Me A Coffee */
+.coffee-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.coffee-button-img {
+    width: 200px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prompt Modal Additions */
+.current-model-display {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.record-prompt-button { /* For PromptModal */
+    background-color: green;
+    color: white;
+    margin-left: 5px;
+}
+
+.record-prompt-button:hover {
+    background-color: darkgreen;
+}
+
+/* Frequent Prompt Suggestor */
+.frequent-prompt-suggestion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.frequent-prompt-text {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.frequent-prompt-count {
+    font-size: 0.9em;
+    color: var(--text-faint);
+}
+
+/* Fullscreen Chat Modal */
+.ai-chat-modal-fullscreen {
+    width: 90vw !important;
+    height: 85vh !important;
+    max-width: none !important;
+    max-height: none !important;
+}
+
+.ai-chat-modal-fullscreen .modal-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.ai-chat-modal-fullscreen .chat-modal-container { /* Message list */
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1em;
+    border-bottom: 1px solid var(--background-modifier-border);
+}
+
+.ai-chat-modal-fullscreen .chat-modal-footer { /* Footer */
+    flex-shrink: 0;
+    padding: 0.5em 1em 1em 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Model Selector in Footer (Removed - now inline) */
+/* .chat-model-selector-setting {
+    margin-bottom: 5px;
+} */
+
+/* Container for Text Input + Button Row */
+.chat-input-buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Text Input Area */
+.chat-modal-footer textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 16px;
+    border: 2px solid var(--interactive-accent);
+    border-radius: 12px;
+    background-color: var(--background-primary);
+    color: var(--text-normal);
+    line-height: 1.5;
+    min-height: calc(2 * 1.5em + 24px);
+    resize: vertical;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-modal-footer textarea:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+    box-shadow: 0 0 0 2px var(--background-modifier-border);
+}
+/* Remove focus outline if border is always visible */
+.chat-modal-footer textarea:focus {
+    outline: none;
+    /* Optional: slightly change border on focus if desired */
+    /* border-color: var(--interactive-accent); */
+}
+
+
+/* Row for Action Buttons Below Textarea */
+.chat-button-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 8px 0;
+}
+
+/* Style icon buttons for consistent size */
+.chat-button-row button {
+    padding: 8px 12px;
+    line-height: 1;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-color: var(--background-secondary);
+    border: 1px solid var(--background-modifier-border);
+    color: var(--text-normal);
+    transition: all 0.2s ease;
+}
+
+.chat-button-row button:hover {
+    background-color: var(--background-modifier-hover);
+    border-color: var(--interactive-accent);
+}
+
+.chat-button-row button.mod-cta {
+    background-color: var(--interactive-accent);
+    color: var(--text-on-accent);
+    border: none;
+}
+
+.chat-button-row button.mod-cta:hover {
+    background-color: var(--interactive-accent-hover);
+}
+
+/* Style the inline model selector */
+.chat-model-selector-inline {
+    flex-grow: 1; /* Allow selector to take some space */
+    min-width: 150px; /* Give it a minimum width */
+    max-width: 250px; /* Prevent it from getting too wide */
+    margin-right: auto; /* Push other buttons to the right */
+}
+
+/* Remove default Setting padding/margins */
+.chat-model-selector-inline .setting-item {
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+.chat-model-selector-inline .setting-item-control {
+    width: 100%; /* Make dropdown fill container */
+}
+.chat-model-selector-inline .dropdown {
+    width: 100%; /* Make dropdown fill container */
+}
+
+/* Token Count Display */
+.chat-token-count {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    text-align: right; /* Align to the right */
+    padding-top: 4px; /* Add a little space above it */
+    width: 100%; /* Ensure it takes full width to allow text-align to work */
+}
+
+
+/* Remove styles for the old bottom button container */
+/* .chat-button-container-right { display: none; } */
+/* .upper-border { display: none; } */

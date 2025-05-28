@@ -1,0 +1,9 @@
+{
+	"id": "obsidian-ai-assistant",
+	"name": "Myco AI",
+	"version": "1.0.0",
+	"minAppVersion": "0.1.0",
+	"description": "AI things for Obsidian",
+	"author": "Myco",
+	"isDesktopOnly": false
+}
