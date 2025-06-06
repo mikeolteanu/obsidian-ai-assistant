@@ -46,56 +46,6 @@
     *   [Logging](#logging)
 4.  [Troubleshooting](#troubleshooting)
 
-## 1. Overview
-
-The AI Assistant Plugin for Obsidian enhances your note-taking experience by integrating various AI-powered functionalities directly into your workspace. It allows users to interact with Large Language Models (LLMs) for text generation, summarization, markdown cleanup, image generation via DALL-E, and speech-to-text transcription via Whisper.
-
-This document serves as a guide for both end-users and developers looking to understand, use, or contribute to the plugin.
-
-## 2. For Users
-
-### Features
-
-#### Assistant Chat
-*   **Command:** `Open Assistant Chat`
-*   **Functionality:** Opens a persistent, fullscreen chat interface. You can have an ongoing conversation with the AI, load previous chats, save current chats, and add context from your notes (files, folders, images).
-*   **Context:** If you have text selected in your editor when invoking this command, it will be used as the initial context for the chat.
-
-#### Assistant Prompt
-*   **Command:** `Open Assistant Prompt`
-*   **Functionality:** Opens a modal to send a one-off prompt to the AI. If text is selected, it's appended to your prompt as context.
-*   **Behavior:** The AI's response can either replace your selected text or be inserted after it, based on your plugin settings.
-
-#### Run Frequent Prompt
-*   **Command:** `Run frequent prompt`
-*   **Functionality:** Opens a suggestion modal listing your most frequently used prompts. Selecting a prompt sends it to the AI, along with any currently selected text as context.
-*   **History:** The plugin keeps track of your prompt usage to populate this list.
-
-#### Clean Up Markdown
-*   **Command:** `Clean up Markdown`
-*   **Functionality:** Takes the selected text and sends it to the AI with a pre-defined prompt to reformat it into clean Markdown.
-*   **Behavior:** Similar to "Assistant Prompt", the result can replace or be inserted after the selection.
-
-#### Image Generator
-*   **Command:** `Open Image Generator`
-*   **Functionality:** Opens a modal to generate images using DALL-E. You can specify the prompt, image size, number of images, and quality (for DALL-E 3).
-*   **Output:** Generated images are displayed in a subsequent modal where you can select images to download to your vault (configurable folder) and copy their Markdown links to the clipboard.
-
-#### Speech to Text
-*   **Command:** `Open Speech to Text`
-*   **Functionality:** Opens a modal to record audio from your microphone. The recorded audio is then transcribed using OpenAI's Whisper API.
-*   **Output:** The transcribed text is inserted at your current cursor position in the editor.
-*   **Language:** You can specify the input audio language in settings, or leave it blank for auto-detection.
-
-#### Select Model
-*   **Command:** `Select Model`
-*   **Functionality:** Opens a modal to quickly change the default LLM used for text generation tasks across the plugin.
-
-#### File/Folder Context Menu Actions
-*   **Right-click on a file or folder in the Obsidian File Explorer:**
-    *   **Collect content:** Copies the content of the selected Markdown file (or all Markdown files within a selected folder) to your clipboard, formatted with file paths.
-    *   **Chat with:** Opens the Assistant Chat modal with the content of the selected Markdown file (or all Markdown files within a selected folder) pre-loaded as initial context. This also works for multi-selections.
-
 ### Installation
 
 **Prerequisites for building plugin:**
@@ -153,6 +103,77 @@ Access the plugin settings via Obsidian's settings panel, under "AI Assistant".
 
 #### Speech to Text Settings
 *   **The language of the input audio:** Specify the language of your speech in ISO-639-1 format (e.g., `en`, `fr`, `de`). Leave empty for auto-detection by Whisper.
+
+### Building the Plugin
+
+The plugin uses `npm` (or a compatible package manager like `yarn` or `pnpm`) and `esbuild`.
+
+1.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
+2.  **Build for Development:** This command usually watches for file changes and rebuilds automatically.
+    ```bash
+    npm run dev
+    ```
+3.  **Build for Production/Release:** This command creates an optimized build.
+    ```bash
+    npm run build
+    ```
+The build process, configured in `esbuild.config.mjs`, compiles the TypeScript code from the `src` directory into `main.js` (and potentially other assets) in the project root or a `build` directory, ready for Obsidian to load. The `manifest.json` and `styles.css` are typically copied to the output as well.
+
+
+## 1. Overview
+
+The AI Assistant Plugin for Obsidian enhances your note-taking experience by integrating various AI-powered functionalities directly into your workspace. It allows users to interact with Large Language Models (LLMs) for text generation, summarization, markdown cleanup, image generation via DALL-E, and speech-to-text transcription via Whisper.
+
+This document serves as a guide for both end-users and developers looking to understand, use, or contribute to the plugin.
+
+## 2. For Users
+
+### Features
+
+#### Assistant Chat
+*   **Command:** `Open Assistant Chat`
+*   **Functionality:** Opens a persistent, fullscreen chat interface. You can have an ongoing conversation with the AI, load previous chats, save current chats, and add context from your notes (files, folders, images).
+*   **Context:** If you have text selected in your editor when invoking this command, it will be used as the initial context for the chat.
+
+#### Assistant Prompt
+*   **Command:** `Open Assistant Prompt`
+*   **Functionality:** Opens a modal to send a one-off prompt to the AI. If text is selected, it's appended to your prompt as context.
+*   **Behavior:** The AI's response can either replace your selected text or be inserted after it, based on your plugin settings.
+
+#### Run Frequent Prompt
+*   **Command:** `Run frequent prompt`
+*   **Functionality:** Opens a suggestion modal listing your most frequently used prompts. Selecting a prompt sends it to the AI, along with any currently selected text as context.
+*   **History:** The plugin keeps track of your prompt usage to populate this list.
+
+#### Clean Up Markdown
+*   **Command:** `Clean up Markdown`
+*   **Functionality:** Takes the selected text and sends it to the AI with a pre-defined prompt to reformat it into clean Markdown.
+*   **Behavior:** Similar to "Assistant Prompt", the result can replace or be inserted after the selection.
+
+#### Image Generator
+*   **Command:** `Open Image Generator`
+*   **Functionality:** Opens a modal to generate images using DALL-E. You can specify the prompt, image size, number of images, and quality (for DALL-E 3).
+*   **Output:** Generated images are displayed in a subsequent modal where you can select images to download to your vault (configurable folder) and copy their Markdown links to the clipboard.
+
+#### Speech to Text
+*   **Command:** `Open Speech to Text`
+*   **Functionality:** Opens a modal to record audio from your microphone. The recorded audio is then transcribed using OpenAI's Whisper API.
+*   **Output:** The transcribed text is inserted at your current cursor position in the editor.
+*   **Language:** You can specify the input audio language in settings, or leave it blank for auto-detection.
+
+#### Select Model
+*   **Command:** `Select Model`
+*   **Functionality:** Opens a modal to quickly change the default LLM used for text generation tasks across the plugin.
+
+#### File/Folder Context Menu Actions
+*   **Right-click on a file or folder in the Obsidian File Explorer:**
+    *   **Collect content:** Copies the content of the selected Markdown file (or all Markdown files within a selected folder) to your clipboard, formatted with file paths.
+    *   **Chat with:** Opens the Assistant Chat modal with the content of the selected Markdown file (or all Markdown files within a selected folder) pre-loaded as initial context. This also works for multi-selections.
+
+
 
 ### Chat Interface Guide
 
@@ -279,23 +300,6 @@ The plugin is written in TypeScript and uses `esbuild` for bundling.
 #### `styles.css`
 *   **Styling:** Contains all CSS rules for the plugin's UI elements, primarily the modals. It defines layouts, colors, and responsive behavior for chat messages, buttons, input fields, etc.
 
-### Building the Plugin
-
-The plugin uses `npm` (or a compatible package manager like `yarn` or `pnpm`) and `esbuild`.
-
-1.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
-2.  **Build for Development:** This command usually watches for file changes and rebuilds automatically.
-    ```bash
-    npm run dev
-    ```
-3.  **Build for Production/Release:** This command creates an optimized build.
-    ```bash
-    npm run build
-    ```
-The build process, configured in `esbuild.config.mjs`, compiles the TypeScript code from the `src` directory into `main.js` (and potentially other assets) in the project root or a `build` directory, ready for Obsidian to load. The `manifest.json` and `styles.css` are typically copied to the output as well.
 
 ### Core Logic
 
