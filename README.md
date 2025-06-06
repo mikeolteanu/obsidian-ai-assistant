@@ -67,13 +67,13 @@
     *   It is highly recommended to review the source code using AI tools or manual inspection to ensure it is not leaking your personal information or API keys. This can be done in many different ways, such as inspecting the source code on GitHub with various AI tools or by manually checking the `main.ts`, `openai_api.ts`, and other relevant files for how API keys and data are handled.
 
 3.  **Build and Install the plugin:**
-	*	See instructions for how to build  
+	*	See instructions for how to build in the Building section of this document. Build the plugin before copying.
     *   Move the downloaded and built `obsidian-ai-assistant` folder (or its contents if you built it: `main.js`, `manifest.json`, `styles.css`) into your Obsidian vault at the following location: `{vault}/.obsidian/plugins/obsidian-ai-assistant`
     *   *(Replace `{vault}` with the actual path to your Obsidian vault.)*
 
 5.  **Add to Obsidian's installed plugins list:**
     *   You may need to manually add the plugin to Obsidian's list of community plugins. Edit the file `{vault}/.obsidian/community-plugins.json`.
-    *   Add `"obsidian-ai-assistant"` (or the plugin ID found in its `manifest.json`) to the JSON array in this file. For example, if the file contains `["another-plugin"]`, change it to `["another-plugin", "obsidian-ai-assistant"]`. If it's empty, it would be `["obsidian-ai-assistant"]`.
+    *   Add `"obsidian-ai-assistant"` (or the plugin ID found in its `manifest.json`) to the JSON array in this file. For example, if the file contains `["another-plugin"]`, change it to `["another-plugin", "obsidian-ai-assistant"]`. If it's empty, it would be `["obsidian-ai-assistant"]`. Note: make sure the commas are in the right places. List format.
 
 6.  **Reload Obsidian and configure:**
     *   Completely close and reopen Obsidian.
@@ -88,8 +88,8 @@
 Access the plugin settings via Obsidian's settings panel, under "AI Assistant".
 
 #### API Keys
-*   **OpenAI API Key:** Required for DALL-E image generation and Whisper/TTS voice features. Get this from your OpenAI account.
-*   **LLM API Key:** Required for text generation. This can be an OpenRouter key or a key for another service if you change the LLM Base URL.
+*   **LLM API Key:** Required for text generation. This can be an OpenRouter key or a key for another service if you change the LLM Base URL. This is the main important key. 
+*   **OpenAI API Key:** Required for DALL-E image generation and Whisper/TTS voice features. Get this from your OpenAI account. Not required for normal text generation.
 
 #### Text Assistant Settings
 *   **LLM Base URL:** The API endpoint for text generation. Defaults to OpenRouter (`https://openrouter.ai/api/v1`). You can change this to point to a local LLM or another compatible service.
