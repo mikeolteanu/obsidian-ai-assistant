@@ -116,15 +116,16 @@ This document serves as a guide for both end-users and developers looking to und
 2.  **Review the source code:**
     *   It is highly recommended to review the source code using AI tools or manual inspection to ensure it is not leaking your personal information or API keys. This can be done in many different ways, such as inspecting the source code on GitHub with various AI tools or by manually checking the `main.ts`, `openai_api.ts`, and other relevant files for how API keys and data are handled.
 
-3.  **Install the plugin:**
-    *   Move the downloaded `obsidian-ai-assistant` folder (or its contents if you built it: `main.js`, `manifest.json`, `styles.css`) into your Obsidian vault at the following location: `{vault}/.obsidian/plugins/obsidian-ai-assistant`
+3.  **Build and Install the plugin:**
+	*	See instructions for how to build  
+    *   Move the downloaded and built `obsidian-ai-assistant` folder (or its contents if you built it: `main.js`, `manifest.json`, `styles.css`) into your Obsidian vault at the following location: `{vault}/.obsidian/plugins/obsidian-ai-assistant`
     *   *(Replace `{vault}` with the actual path to your Obsidian vault.)*
 
-4.  **Add to Obsidian's installed plugins list:**
+5.  **Add to Obsidian's installed plugins list:**
     *   You may need to manually add the plugin to Obsidian's list of community plugins. Edit the file `{vault}/.obsidian/community-plugins.json`.
     *   Add `"obsidian-ai-assistant"` (or the plugin ID found in its `manifest.json`) to the JSON array in this file. For example, if the file contains `["another-plugin"]`, change it to `["another-plugin", "obsidian-ai-assistant"]`. If it's empty, it would be `["obsidian-ai-assistant"]`.
 
-5.  **Reload Obsidian and configure:**
+6.  **Reload Obsidian and configure:**
     *   Completely close and reopen Obsidian.
     *   Go to `Settings` in your vault.
     *   Navigate to `Community plugins`.
